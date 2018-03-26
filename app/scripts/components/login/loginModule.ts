@@ -9,7 +9,7 @@ const state:State={
 
 const actions:ActionTree<State, any>={
   login: async({},params:any)=>{
-    let result=await post('/user/login.do',params);
+    let result=await post('/login',params);
     return result.data;
   }
 };

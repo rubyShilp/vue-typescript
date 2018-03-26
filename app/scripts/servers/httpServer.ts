@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.headers = { 'Content-Type': 'application/json' || 'multipart/form-data','X-Frame-Options':'SAMEORIGIN'};
-axios.defaults.baseURL = '/api/';
+axios.defaults.baseURL = '/user/';
 //请求拦截器
 axios.interceptors.request.use(
     (config)=>{

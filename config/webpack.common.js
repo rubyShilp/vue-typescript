@@ -12,12 +12,6 @@ module.exports={
             'node_modules',
             path.resolve(process.cwd(), 'app')
         ],
-        // alias: {
-        //     'vue':path.resolve(process.cwd(), './node_modules/vue/dist/vue.min.js'),
-        //     'vue-router':path.resolve(process.cwd(), './node_modules/vue-router/dist/vue-router.min.js'),
-        //     'vuex':path.resolve(process.cwd(), './node_modules/vuex/dist/vuex.min.js'),
-        //     'md5':path.resolve(process.cwd(), './node_modules/md5/md5.js')
-        // },
         extensions: ['.vue','.js','.ts','.less','.css']
     },
     module:{

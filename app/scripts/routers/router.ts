@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import axios from 'axios';
-import login from './../components/login/login.vue';
+import login from './../components/login/login.vue'
 Vue.use(VueRouter);
 //路由页面切换的时候，保持页面在滚动顶部显示
 const scrollBehavior=(to:any,from:any,savedPosition:any)=>{
@@ -27,7 +26,7 @@ const loginRouter = [
 const routes=[...loginRouter];
 // 创建router实例
 const router:VueRouter = new VueRouter({
-    mode:'hash',
+    mode:'history',
     base: __dirname,
     scrollBehavior,
     routes:routes,

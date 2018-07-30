@@ -1,5 +1,6 @@
 let webpack = require('webpack');
 let path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports={
@@ -65,24 +66,34 @@ module.exports={
             }
         ]
     },
+    performance: {
+        hints: false
+    },
+    optimization:{
+        splitChunks:{
+            chunks: "all", 
+            cacheGroups:{
+                vendor:{
+                    chunks:'all',
+                    test:"/node_modules\/(.*)\.js/",
+                    name:'vendor'
+                }
+            }
+        }
+    },
     plugins:[
+        new VueLoaderPlugin(),
         new webpack.ProgressPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('[name].bundle[hash:7].css'),
-        // new webpack.ProvidePlugin({
-        //     $: 'jquery',
-        //     jQuery: 'jquery',
-        //     'window.jQuery':'jquery'
-        // }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'main',
-            filename:"main.bundle[hash:7].js"
-        }),
         new HtmlWebpackPlugin({ 
             template: './index.html',
             favicon: './favicon.ico',
-            chunks:['main'],
-            minimize: true
+            filename:'index.html',
+            hash:true,//防止缓存
+            minify:{
+                removeAttributeQuotes:true//压缩 去掉引号
+            }
         })
     ]
 }
